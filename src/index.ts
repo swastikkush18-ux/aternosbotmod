@@ -19,7 +19,8 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('AterBot is running!');
 });
-server.listen(8080, '0.0.0.0', () => log('log', 'Web server started on port 8080'));
+const httpPort = parseInt(process.env.PORT || '8080');
+server.listen(httpPort, '0.0.0.0', () => log('log', `Web server started on port ${httpPort}`));
 
 function createBot() {
   log('log', `Connecting to ${host}:${port} as ${username}...`);
